@@ -11,8 +11,9 @@ public class ClientSocket {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("javarush.com",80);
 
+        //Получить точное UTC-время
 //        Socket socket = new Socket();
-//        socket.connect(new InetSocketAddress("ya.ru",80), 2000);
+//        socket.connect(new InetSocketAddress("india.colorado.edu",13), 2000);
 //
 //        Scanner scanner = new Scanner(socket.getInputStream());
 //        while (scanner.hasNextLine()) {

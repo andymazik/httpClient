@@ -31,14 +31,10 @@ public class Old {
             content.append(bufferedReader.readLine());
         }
 
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//        while (bufferedReader.ready()) {
-//            content.append(bufferedReader.readLine());
-//        }
 
-        bufferedReader.close();
-        JsonParser.parseJson(content.toString());
-        connection.disconnect();
-        //System.out.println(content);
+//        bufferedReader.close();
+//        JsonParser.parseJson(content.toString());
+//        connection.disconnect();
+        System.out.println(content);
     }
 }

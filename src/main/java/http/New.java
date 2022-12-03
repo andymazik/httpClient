@@ -21,15 +21,7 @@ public class New {
                 //  .POST(HttpRequest.BodyPublishers.fromFile(Path.of()))
                 .build();
 
-        //простейший вариант
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        //посложнее
-//        HttpResponse<String> response = HttpClient.newBuilder()
-//                .followRedirects(HttpClient.Redirect.ALWAYS)
-//                .build()
-//                .send(request, HttpResponse.BodyHandlers.ofString());
-
 
 
         System.out.println(response.statusCode());

@@ -1,7 +1,8 @@
-package http.entity;
+package http;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import http.entity.Post;
 
 import java.io.IOException;
 import java.net.URI;

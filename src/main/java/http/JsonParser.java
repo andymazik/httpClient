@@ -23,8 +23,6 @@ public class JsonParser {
                 //.timeout(Duration.ofMillis(5000))
                 //.header("Content-Type", "application/json")
                 .GET()
-                //.POST(HttpRequest.BodyPublishers.ofString("HEllo"))
-                //  .POST(HttpRequest.BodyPublishers.fromFile(Path.of()))
                 .build();
 
         //простейший вариант
@@ -36,29 +34,32 @@ public class JsonParser {
                 .build()
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
-        //еще сложнее, возможно использовать только с sendAsync
+        //еще сложнее, sendAsync
 //        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
 //                        .thenApply(HttpResponse::body)
 //                        .thenAccept(System.out::println)
 //                        .join();
 
-        //вызов метода для парсинга
+        //вызов метода для парсинга JSON
 //        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
 //                        .thenApply(HttpResponse::body)
 //                        .thenAccept(JsonParser::parseJson)
 //                        .join();
 
 
-//        System.out.println(response.statusCode());
-//        System.out.println(response.headers());
-//        System.out.println(response.body());
-        List<User> users = advancedParse(response);
-        for (User user : users) {
-            System.out.println(user);
-        }
+        System.out.println(response.statusCode());
+        System.out.println(response.headers());
+        System.out.println(response.body());
+
+        //Парсинг JSON
+//        List<User> users = advancedParse(response);
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
 
     }
 
+    //Примитивный парсинг
     public static void parseJson(String body){
         JSONArray data = new JSONArray(body);
         for (int i = 0; i < data.length(); i++) {
@@ -78,12 +79,8 @@ public class JsonParser {
 
     }
 
-//    public static List<Post> advancedParse(HttpResponse<String> response) throws JsonProcessingException {
-//        JsonMapper jsonMapper = new JsonMapper();
-//        Post[] posts = jsonMapper.readValue(response.body(), Post[].class);
-//        return List.of(posts);
-//    }
 
+    //Продвинутый парсинг
     public static List<User> advancedParse(HttpResponse<String> response) throws JsonProcessingException {
         JsonMapper jsonMapper = new JsonMapper();
         User[] users = jsonMapper.readValue(response.body(), User[].class);
